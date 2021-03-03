@@ -1,0 +1,75 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="app.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/9.2.0/math.js" integrity="sha512-SewEag0kt1xsJdbfAXgLyLvYXeAoGEla4M6JSitT6ocJVI+VeUbFXkgrbloNn4cVgq46caRf31un2eoalq6YOw==" crossorigin="anonymous"></script>
+    <script>
+        function result(){
+            if(input.value!=''){
+                var result = math.evaluate(input.value);
+                input.value=result;
+            }
+        }
+        function square(){
+            var result = math.evaluate(input.value);
+            result*=result;
+            input.value=result;
+        }
+        function factorial(){
+            var result = math.evaluate(input.value);
+            var answer = 1;
+            for(var i=1;i<=result;i++){
+                answer*=i;
+            }
+            input.value = answer;
+        }
+    </script>
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous"> -->
+</head>
+<body>
+    <div class="main">
+        <div class="header">
+            Calculator
+        </div>
+        <div class="input">
+            <input type="text" name="" id="input" size="50">
+            <!-- <button id="button" style="background-color:dodgerblue; color:white;">Result</button> -->
+            <button id="button-1" onclick="hello()" style="background-color:dodgerblue; color:white;">Clear</button>
+        </div>
+        <div class="keys">
+            <button onclick="enter(1)" class="digit">1</button>
+            <button onclick="enter(2)" class="digit">2</button>
+            <button onclick="enter(3)" class="digit">3</button>
+            <button onclick="enter('+')" class="digit">+</button>
+        </div>
+        <div class="keys">
+            <button onclick="enter(4)" class="digit">4</button>
+            <button onclick="enter(5)" class="digit">5</button>
+            <button onclick="enter(6)" class="digit">6</button>
+            <button onclick="enter('-')" class="digit">-</button>
+        </div>
+        <div class="keys">
+            <button onclick="enter(7)" class="digit">7</button>
+            <button onclick="enter(8)" class="digit">8</button>
+            <button onclick="enter(9)" class="digit">9</button>
+            <button onclick="enter('*')" class="digit">*</button>
+        </div>
+        <div class="keys">
+            <button onclick="enter('right')" class="digit">(</button>
+            <button onclick="enter(0)" class="digit">0</button>
+            <button onclick="enter('left')" class="digit">)</button>
+            <button onclick="enter('/')" class="digit">/</button>
+        </div>
+        <div class="keys">
+            <button onclick="square()" class="digit">x<sup>2</sup></button>
+            <button onclick="factorial()" class="digit">x!</button>
+            <button onclick="back()" class="digit">back</button>
+            <button onclick="result()" class="digit">=</button>
+        </div>
+    </div>
+</body>
+</html>
