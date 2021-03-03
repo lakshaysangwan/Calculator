@@ -1,6 +1,6 @@
-{/* <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/9.2.0/math.js" integrity="sha512-SewEag0kt1xsJdbfAXgLyLvYXeAoGEla4M6JSitT6ocJVI+VeUbFXkgrbloNn4cVgq46caRf31un2eoalq6YOw==" crossorigin="anonymous"></script> */}
 const input = document.getElementById('input');
-function hello(){
+const body = document.getElementById('main');
+function clr(){
     input.value="";
 }
 function enter(x){
@@ -22,3 +22,15 @@ function back(){
     }
     input.value=result;
 }
+function insert(event){
+    var x = event.key;
+    input.value+=x;
+}
+input.addEventListener("keypress",function(e){
+    if(e.keyCode == 13){
+        result();
+    }
+    else if(e.keyCode == 27){
+        clr();
+    }
+});

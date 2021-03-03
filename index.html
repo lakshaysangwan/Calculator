@@ -28,20 +28,19 @@
             input.value = answer;
         }
     </script>
-    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous"> -->
 </head>
 <body>
-    <div class="main">
+    <div class="main" onkeypress="insert()">
         <div class="header">
             Calculator
         </div>
         <div class="input">
-            <input type="text" name="" id="input" size="50">
+            <input type="text" name="" id="input" >
             <!-- <button id="button" style="background-color:dodgerblue; color:white;">Result</button> -->
-            <button id="button-1" onclick="hello()" style="background-color:dodgerblue; color:white;">Clear</button>
+            <button id="button-1" onclick="clr()" style="background-color:dodgerblue; color:white;">Clear</button>
         </div>
         <div class="keys">
-            <button onclick="enter(1)" class="digit">1</button>
+            <button onclick="enter(1)" on class="digit">1</button>
             <button onclick="enter(2)" class="digit">2</button>
             <button onclick="enter(3)" class="digit">3</button>
             <button onclick="enter('+')" class="digit">+</button>
