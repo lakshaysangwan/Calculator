@@ -3,71 +3,64 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculator</title>
+    <title>Calculator 1.0</title>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
-    <script src="app.js" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/9.2.0/math.js" integrity="sha512-SewEag0kt1xsJdbfAXgLyLvYXeAoGEla4M6JSitT6ocJVI+VeUbFXkgrbloNn4cVgq46caRf31un2eoalq6YOw==" crossorigin="anonymous"></script>
-    <script>
-        function result(){
-            if(input.value!=''){
-                var result = math.evaluate(input.value);
-                input.value=result;
-            }
-        }
-        function square(){
-            var result = math.evaluate(input.value);
-            result*=result;
-            input.value=result;
-        }
-        function factorial(){
-            var result = math.evaluate(input.value);
-            var answer = 1;
-            for(var i=1;i<=result;i++){
-                answer*=i;
-            }
-            input.value = answer;
-        }
-    </script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
+    <script defer src="./app.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
 </head>
 <body>
-    <div class="main" onkeypress="insert()">
-        <div class="header">
-            Calculator
-        </div>
-        <div class="input">
-            <input type="text" name="" id="input" >
-            <!-- <button id="button" style="background-color:dodgerblue; color:white;">Result</button> -->
-            <button id="button-1" onclick="clr()" style="background-color:dodgerblue; color:white;">Clear</button>
-        </div>
-        <div class="keys">
-            <button onclick="enter(1)" on class="digit">1</button>
-            <button onclick="enter(2)" class="digit">2</button>
-            <button onclick="enter(3)" class="digit">3</button>
-            <button onclick="enter('+')" class="digit">+</button>
-        </div>
-        <div class="keys">
-            <button onclick="enter(4)" class="digit">4</button>
-            <button onclick="enter(5)" class="digit">5</button>
-            <button onclick="enter(6)" class="digit">6</button>
-            <button onclick="enter('-')" class="digit">-</button>
-        </div>
-        <div class="keys">
-            <button onclick="enter(7)" class="digit">7</button>
-            <button onclick="enter(8)" class="digit">8</button>
-            <button onclick="enter(9)" class="digit">9</button>
-            <button onclick="enter('*')" class="digit">*</button>
-        </div>
-        <div class="keys">
-            <button onclick="enter('right')" class="digit">(</button>
-            <button onclick="enter(0)" class="digit">0</button>
-            <button onclick="enter('left')" class="digit">)</button>
-            <button onclick="enter('/')" class="digit">/</button>
-        </div>
-        <div class="keys">
-            <button onclick="square()" class="digit">x<sup>2</sup></button>
-            <button onclick="factorial()" class="digit">x!</button>
-            <button onclick="back()" class="digit">back</button>
-            <button onclick="result()" class="digit">=</button>
+    <div class="container">
+        <div class="card m-auto mt-5">
+            <div class="card-header">
+                <h1 class="text-center">Calculator</h1>
+            </div>
+            <div class="card-body mt-3">
+                <div class="input-group mb-3 w-75 m-auto">
+                    <!-- <span class="input-group-text" id="basic-addon1">@</span> -->
+                    <input onkeydown="keyPressed(event)" id="result" value="" type="text" class="form-control" aria-describedby="basic-addon1"><button type="button" class="btn btn-outline-danger col-3" onclick="clr()">Clear</button>
+                </div>
+                <div class="text-center row m-auto hello">
+                    <div class="w-100">
+                        <button type="button" class="btn btn-outline-secondary col-3" onclick="reciprocal()">1/X</button>
+                        <button type="button" class="btn btn-outline-secondary col-3" onclick="square()">X<sup>2</sup></button>
+                        <button type="button" class="btn btn-outline-secondary col-3" onclick="factorial()">X!</button>
+                        <button type="button" class="btn btn-outline-danger col-3" onclick="back()"><i class="bi bi-backspace-fill"></i></button>
+                    </div>
+                    <div class="w-100">
+                        <button type="button" class="btn btn-outline-secondary col-3" onclick="insert('left')">&#40;</button>
+                        <button type="button" class="btn btn-outline-secondary col-3" onclick="insert('right')">&#41;</button>
+                        <button type="button" class="btn btn-outline-secondary col-3" onclick="randomNo()">R</button>
+                        <button type="button" class="btn btn-outline-secondary col-3" onclick="insertOperation('/')">/</button>
+                    </div>
+                    <div class="w-100">
+                        <button type="button" class="btn btn-outline-primary col-3" onclick="insert(1)">1</button>
+                        <button type="button" class="btn btn-outline-primary col-3" onclick="insert(2)">2</button>
+                        <button type="button" class="btn btn-outline-primary col-3" onclick="insert(3)">3</button>
+                        <button type="button" class="btn btn-outline-secondary col-3" onclick="insertOperation('*')">*</button>
+                    </div>
+                    <div class="w-100">
+                        <button type="button" class="btn btn-outline-primary col-3 " onclick="insert(4)">4</button>
+                        <button type="button" class="btn btn-outline-primary col-3" onclick="insert(5)">5</button>
+                        <button type="button" class="btn btn-outline-primary col-3" onclick="insert(6)">6</button>
+                        <button type="button" class="btn btn-outline-secondary col-3" onclick="insertOperation('-')">-</button>
+                    </div>
+                    <div class="w-100">
+                        <button type="button" class="btn btn-outline-primary col-3 " onclick="insert(7)">7</button>
+                        <button type="button" class="btn btn-outline-primary col-3" onclick="insert(8)">8</button>
+                        <button type="button" class="btn btn-outline-primary col-3" onclick="insert(9)">9</button>
+                        <button type="button" class="btn btn-outline-secondary col-3" onclick="insertOperation('+')">+</button>
+                    </div>
+                    <div class="w-100">
+                        <button type="button" class="btn btn-outline-secondary col-3 " onclick="plusMinus()">±</button>
+                        <button type="button" class="btn btn-outline-primary col-3" onclick="insert(0)">0</button>
+                        <button type="button" class="btn btn-outline-secondary col-3" onclick="insert('.')">.</button>
+                        <button type="button" class="btn btn-outline-success col-3" onclick="calculate()">=</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </body>
